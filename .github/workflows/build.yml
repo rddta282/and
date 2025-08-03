@@ -1,0 +1,21 @@
+
+name: Build GSI
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-core gnupg flex bison build-essential zip curl ...
+
+      - name: Build GSI
+        run: |
+          git clone https://github.com/erfanoabdi/ErfanGSIs
+          cd ErfanGSIs
+          bash build.sh # or bash lite-adapter.sh for lite version
